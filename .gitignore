@@ -6,3 +6,11 @@ docs/
 /tdlib/
 vcpkg/
 .clang-tidy
+build-packages/
+.cache/
+obj-*/
+debian/.debhelper/
+debian/files
+debian/libtde2e-dev/
+debian/*.substvars
+debian/debhelper-build-stamp

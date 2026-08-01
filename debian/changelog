@@ -1,0 +1,20 @@
+tde2e (0~git20250510.51743df+ppa2~resolute1) resolute; urgency=medium
+
+  * Drop the unanchored "build" tar-ignore pattern, which would strip any
+    nested build directory from the source tarball. Harmless in this tree,
+    which has none, but it broke telegram-desktop outright.
+  * Test-build the extracted source package rather than the working-tree
+    copy, so this class of packaging defect is caught before upload.
+
+ -- Stanislav Aleksandrov <lightofmysoul@gmail.com>  Sat, 01 Aug 2026 22:30:00 +0000
+
+tde2e (0~git20250510.51743df+ppa1~resolute1) resolute; urgency=medium
+
+  * Initial packaging for ppa:lightofmysoul/tg.
+  * Built from tdlib/td commit 51743df (TDLib 1.8.49 development tree), the
+    revision pinned by Telegram Desktop v7.0.7 in
+    Telegram/build/prepare/prepare.py.
+  * Built with TD_E2E_ONLY so only tde2e and tdutils are produced, not the
+    whole of TDLib.
+
+ -- Stanislav Aleksandrov <lightofmysoul@gmail.com>  Sat, 01 Aug 2026 18:56:00 +0000

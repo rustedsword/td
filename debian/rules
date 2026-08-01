@@ -1,0 +1,19 @@
+#!/usr/bin/make -f
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# TD_E2E_ONLY builds and installs only tde2e and tdutils instead of the whole
+# of TDLib, which is what Telegram Desktop's find_package(tde2e) expects.
+#
+# TD_INSTALL_STATIC_LIBRARIES defaults to ON upstream but is set explicitly
+# because the generated tde2eConfig.cmake unconditionally includes
+# tde2eStaticTargets.cmake, and that targets file is only installed when this
+# is on. Turning it off would ship a package config that cannot be loaded.
+%:
+	dh $@ --buildsystem=cmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		-DTD_E2E_ONLY=ON \
+		-DTD_INSTALL_STATIC_LIBRARIES=ON \
+		-DTD_INSTALL_SHARED_LIBRARIES=OFF

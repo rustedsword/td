@@ -1,0 +1,34 @@
+Source: tde2e
+Section: libs
+Priority: optional
+Maintainer: Stanislav Aleksandrov <lightofmysoul@gmail.com>
+Build-Depends:
+ cmake,
+ debhelper-compat (= 13),
+ gperf,
+ libssl-dev,
+ zlib1g-dev,
+Standards-Version: 4.7.3
+Rules-Requires-Root: no
+Homepage: https://github.com/tdlib/td
+
+Package: libtde2e-dev
+Section: libdevel
+Architecture: amd64 arm64
+Multi-Arch: same
+Depends:
+ libssl-dev,
+ zlib1g-dev,
+ ${misc:Depends},
+Description: Telegram end-to-end encryption library (static library)
+ tde2e is the end-to-end encryption library from TDLib, built on its own via
+ upstream's TD_E2E_ONLY option. Telegram Desktop 6.0 and later require it for
+ encrypted group calls and link it unconditionally on Linux.
+ .
+ This package ships static libraries, their headers and a CMake package
+ configuration providing the tde2e::tde2e target. There is no shared library
+ and therefore no runtime package: anything linking tde2e must be rebuilt when
+ this package changes.
+ .
+ Built from the exact upstream commit that the corresponding Telegram Desktop
+ release pins.
